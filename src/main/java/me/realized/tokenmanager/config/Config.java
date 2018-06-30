@@ -83,6 +83,8 @@ public class Config extends AbstractConfiguration<TokenManagerPlugin> {
     @Getter
     private String redisServer;
     @Getter
+    private int redisDatabase;
+    @Getter
     private int redisPort;
     @Getter
     private String redisPassword;
@@ -125,8 +127,9 @@ public class Config extends AbstractConfiguration<TokenManagerPlugin> {
         mysqlTable = configuration.getString("data.mysql.table", "tokenmanager");
         redisEnabled = configuration.getBoolean("data.mysql.redis.enabled", false);
         redisServer = configuration.getString("data.mysql.redis.server", "127.0.0.1");
+        redisDatabase = configuration.getInt("data.mysql.redis.database", 0);
         redisPort = configuration.getInt("data.mysql.redis.port", 6379);
-        redisPassword = configuration.getString("data.mysql.redis.password", "");
+        redisPassword = configuration.getString("data.mysql.redis.password", null);
         registerEconomy = configuration.getBoolean("data.register-economy", false);
         balanceTopUpdateInterval = configuration.getInt("data.balance-top-update-interval", 5);
     }

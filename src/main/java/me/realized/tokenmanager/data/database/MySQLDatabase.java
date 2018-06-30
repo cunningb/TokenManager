@@ -103,14 +103,9 @@ public class MySQLDatabase extends AbstractDatabase {
         this.dataSource = new HikariDataSource(hikariConfig);
 
         if (config.isRedisEnabled()) {
-            final String password = config.getRedisPassword();
 
-            if (password.isEmpty()) {
-                this.jedisPool = new JedisPool(new JedisPoolConfig(), config.getRedisServer(), config.getRedisPort(), 0);
-            } else {
-                this.jedisPool = new JedisPool(new JedisPoolConfig(), config.getRedisServer(), config.getRedisPort(), 0, password);
-            }
-
+            this.jedisPool = new JedisPool(new JedisPoolConfig(), config.getRedisServer(), config.getRedisPort(), 0, config.getRedisPassword(), config.getRedisDatabase());
+                
             plugin.doAsync(() -> {
                 usingRedis = true;
 
