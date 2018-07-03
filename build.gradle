@@ -11,7 +11,7 @@ buildscript {
 }
 
 group 'me.realized'
-version '3.1.1'
+version '3.1.2'
 
 apply plugin: 'java'
 apply plugin: 'com.github.johnrengelman.shadow'
@@ -100,7 +100,7 @@ dependencies {
 
     compile 'redis.clients:jedis:2.9.0'
     compile 'org.apache.commons:commons-pool2:2.4.2'
-    compile 'com.zaxxer:HikariCP:2.7.8'
+    compile 'com.zaxxer:HikariCP:2.4.7'
     compile 'org.inventivetalent.spiget-update:bukkit:1.4.0'
     compile 'org.bstats:bstats-bukkit:1.2'
 }
@@ -110,8 +110,6 @@ shadowJar {
     classifier = null
 
     dependencies {
-        include(dependency('redis.clients:.*'))
-        include(dependency('org.apache.commons:.*'))
         include(dependency('com.zaxxer:.*'))
         include(dependency('org.slf4j:.*'))
         include(dependency('org.inventivetalent.spiget-update:.*'))
